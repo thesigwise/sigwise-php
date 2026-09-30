@@ -1,0 +1,29 @@
+{
+  "generator": "generate-sdk",
+  "language": "php",
+  "version": "1.0.0",
+  "files": [
+    ".gitignore",
+    "README.md",
+    "composer.json",
+    "src/Client.php",
+    "src/ConnectionException.php",
+    "src/Resources/ApiKeys.php",
+    "src/Resources/Billing.php",
+    "src/Resources/Events.php",
+    "src/Resources/Me.php",
+    "src/Resources/Objects.php",
+    "src/Resources/Overview.php",
+    "src/Resources/RuleFirings.php",
+    "src/Resources/Rules.php",
+    "src/Resources/Settings.php",
+    "src/Resources/Signals.php",
+    "src/Resources/Usage.php",
+    "src/Resources/WebhookDeliveries.php",
+    "src/Resources/Webhooks.php",
+    "src/SigWiseException.php",
+    "src/Types.php",
+    "src/Webhook.php",
+    "src/WebhookVerificationException.php"
+  ]
+}

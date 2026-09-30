@@ -1,0 +1,20 @@
+{
+    "name": "sigwise/sdk",
+    "description": "SigWise API client for PHP",
+    "type": "library",
+    "license": "proprietary",
+    "version": "1.0.0",
+    "require": {
+        "php": ">=8.1",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "SigWise\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
