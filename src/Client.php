@@ -18,7 +18,7 @@ namespace SigWise;
  */
 final class Client
 {
-    public const VERSION = '1.0.0';
+    public const VERSION = '1.0.1';
     public const DEFAULT_BASE_URL = 'https://api.sigwise.ai';
 
     /** How long each request token is valid for, in seconds (the API allows 300). */
@@ -32,6 +32,8 @@ final class Client
     public readonly Resources\Overview $overview;
     /** An object is anything you want answers about: a user, a listing, an order. */
     public readonly Resources\Objects $objects;
+    /** Events and messages are the evidence an object's answers are computed from. */
+    public readonly Resources\Playground $playground;
     /** Events and messages are the evidence an object's answers are computed from. */
     public readonly Resources\Events $events;
     /** A signal is a question you ask about every object, such as "is this a scammer?" (`noul`), "how trustworthy is this user?" (`score`) or "what is their buyer intent?" (`choice`). */
@@ -88,6 +90,7 @@ final class Client
         $this->me = new Resources\Me($this);
         $this->overview = new Resources\Overview($this);
         $this->objects = new Resources\Objects($this);
+        $this->playground = new Resources\Playground($this);
         $this->events = new Resources\Events($this);
         $this->signals = new Resources\Signals($this);
         $this->settings = new Resources\Settings($this);
