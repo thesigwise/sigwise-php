@@ -53,7 +53,7 @@ final class Billing
      *
      * `GET /v1/billing/ledger`
      *
-     * @param array{type?: 'credit'|'charge', limit?: int, cursor?: string} $params
+     * @param array{type?: 'credit'|'charge', limit?: int, group?: 'batch', batch_id?: string, cursor?: string} $params
      * @param array{timeout?: float|int, max_retries?: int, headers?: array<string, string>} $options
      * @return LedgerPage
      * @throws SigWiseException

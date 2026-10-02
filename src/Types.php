@@ -38,7 +38,8 @@ namespace SigWise;
  * @phpstan-type EventType 'event'|'message'
  * @phpstan-type IngestAccepted array{object_id: string, accepted: int, analysis_status: 'scheduled', analysis_delay_ms: int}
  * @phpstan-type IngestRequest array{object_type?: string, events: list<EventInput>, wait?: bool, signals?: list<string>, include_history?: bool}
- * @phpstan-type LedgerEntry array{id: string, delta_cents: int, balance_after_cents: int, delta_micros: int, balance_after_micros: int, reason: string, model?: string, object_id?: string, cost_usd?: float|int, cost_margin?: float|int, input_tokens?: int, output_tokens?: int, payment_ref?: string, created_at: string}
+ * @phpstan-type LedgerBatch array{count: int, delta_micros: int, input_tokens: int, output_tokens: int, models: int, model?: string, first_at: string}
+ * @phpstan-type LedgerEntry array{id: string, delta_cents: int, balance_after_cents: int, delta_micros: int, balance_after_micros: int, reason: string, model?: string, object_id?: string, cost_usd?: float|int, cost_margin?: float|int, input_tokens?: int, output_tokens?: int, payment_ref?: string, batch_id?: string, batch?: LedgerBatch, created_at: string}
  * @phpstan-type LedgerPage array{entries: list<LedgerEntry>, next_cursor: string}
  * @phpstan-type Me array{auth_type: 'tenant'|'console', tenant_id: string, tenant_name: string, user_id?: string, email?: string, role?: string, onboarded?: bool}
  * @phpstan-type Metadata array<string, mixed>
@@ -48,6 +49,8 @@ namespace SigWise;
  * @phpstan-type ObjectState array{object_id: string, compacted_events: int, compacted_through?: string|null, compacted_state?: CompactedState|null, last_analyzed_at?: string|null}
  * @phpstan-type ObjectSummary array{object_id: string, object_type: string, display_name?: string, event_count: int, last_seen: string, analysis: list<SignalResult>, pending: list<string>}
  * @phpstan-type Overview array{objects: int, signals: int, analyzed_pct: float|int, events_today: int, flagged: int, signal_summary: list<SignalSummary>, categories: list<CategoryCount>, top_risk: list<RiskyObject>}
+ * @phpstan-type PlaygroundRequest array{object_type?: string, events: list<EventInput>, signals?: list<string>}
+ * @phpstan-type PlaygroundResult array{analyzed: bool, model: string, latency_ms: int, answers: list<Answer>, cost_micros: int, events_count: int, reason?: string}
  * @phpstan-type RiskyObject array{object_id: string, display_name?: string, risk: float|int}
  * @phpstan-type Rule array{id: string, name: string, when: string, action_type: ActionType, action_config: ActionConfig, enabled: bool, cooldown_seconds: int, created_at: string, updated_at: string}
  * @phpstan-type RuleCreate array{name?: string, when: string, action_type: ActionType, action_config: ActionConfig, enabled?: bool, cooldown_seconds?: int}

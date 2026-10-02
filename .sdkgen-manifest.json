@@ -1,7 +1,7 @@
 {
   "generator": "generate-sdk",
   "language": "php",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "files": [
     ".gitignore",
     "README.md",
@@ -14,6 +14,7 @@
     "src/Resources/Me.php",
     "src/Resources/Objects.php",
     "src/Resources/Overview.php",
+    "src/Resources/Playground.php",
     "src/Resources/RuleFirings.php",
     "src/Resources/Rules.php",
     "src/Resources/Settings.php",
