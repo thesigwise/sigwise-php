@@ -18,7 +18,7 @@ namespace SigWise;
  */
 final class Client
 {
-    public const VERSION = '1.0.1';
+    public const VERSION = '1.0.2';
     public const DEFAULT_BASE_URL = 'https://api.sigwise.ai';
 
     /** How long each request token is valid for, in seconds (the API allows 300). */
@@ -64,24 +64,24 @@ final class Client
     private readonly array $headers;
 
     /**
-     * @param string|null $apiKey The API key ID. Defaults to ANALYZE_API_KEY.
-     * @param string|null $secret The key's signing secret. Defaults to ANALYZE_SECRET.
+     * @param string|null $apiKey The API key ID. Defaults to SIGWISE_API_KEY.
+     * @param string|null $secret The key's signing secret. Defaults to SIGWISE_SECRET.
      * @param array{base_url?: string, timeout?: float|int, max_retries?: int, headers?: array<string, string>} $options
-     *     base_url defaults to ANALYZE_BASE_URL, then the production API; timeout is in seconds (30);
+     *     base_url defaults to SIGWISE_BASE_URL, then the production API; timeout is in seconds (30);
      *     max_retries applies to idempotent requests only (2).
      */
     public function __construct(?string $apiKey = null, ?string $secret = null, array $options = [])
     {
-        $apiKey = $apiKey ?: (getenv('ANALYZE_API_KEY') ?: null);
-        $secret = $secret ?: (getenv('ANALYZE_SECRET') ?: null);
+        $apiKey = $apiKey ?: (getenv('SIGWISE_API_KEY') ?: null);
+        $secret = $secret ?: (getenv('SIGWISE_SECRET') ?: null);
         if ($apiKey === null || $secret === null) {
             throw new \InvalidArgumentException(
-                'SigWise: an API key and its secret are required. Pass them to the constructor or set ANALYZE_API_KEY and ANALYZE_SECRET.'
+                'SigWise: an API key and its secret are required. Pass them to the constructor or set SIGWISE_API_KEY and SIGWISE_SECRET.'
             );
         }
         $this->apiKey = $apiKey;
         $this->secret = $secret;
-        $base = $options['base_url'] ?? (getenv('ANALYZE_BASE_URL') ?: self::DEFAULT_BASE_URL);
+        $base = $options['base_url'] ?? (getenv('SIGWISE_BASE_URL') ?: self::DEFAULT_BASE_URL);
         $this->baseUrl = rtrim($base, '/');
         $this->timeout = (float) ($options['timeout'] ?? 30);
         $this->maxRetries = $options['max_retries'] ?? 2;

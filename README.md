@@ -18,7 +18,7 @@ composer require sigwise/sdk
 
 require 'vendor/autoload.php';
 
-// Null arguments fall back to ANALYZE_API_KEY and ANALYZE_SECRET.
+// Null arguments fall back to SIGWISE_API_KEY and SIGWISE_SECRET.
 $sigwise = new SigWise\Client('your_key_id', 'your_secret');
 
 // Configure what you want to know about your objects.
@@ -55,14 +55,14 @@ Create an API key in the console. It is a pair: a public key ID and a
 signing secret (`your_secret`, shown once). The client sends the key ID with every
 request and signs a short-lived HS256 token with the secret, bound to the
 request's method and path. The secret itself is never sent, so keep it on your
-server. Without explicit options the client reads `ANALYZE_API_KEY`,
-`ANALYZE_SECRET` and `ANALYZE_BASE_URL` from the environment.
+server. Without explicit options the client reads `SIGWISE_API_KEY`,
+`SIGWISE_SECRET` and `SIGWISE_BASE_URL` from the environment.
 
 ## Configuration
 
 ```php
 $sigwise = new SigWise\Client('your_key_id', 'your_secret', [
-    'base_url' => 'http://localhost:8080', // default: ANALYZE_BASE_URL or the production API
+    'base_url' => 'http://localhost:8080', // default: SIGWISE_BASE_URL or the production API
     'timeout' => 10,                       // seconds, per attempt
     'max_retries' => 3,                    // idempotent requests only
 ]);
@@ -106,7 +106,7 @@ try {
         file_get_contents('php://input'),
         $_SERVER['HTTP_X_WEBHOOK_SIGNATURE'] ?? null,
         $_SERVER['HTTP_X_WEBHOOK_TIMESTAMP'] ?? null,
-        getenv('ANALYZE_WEBHOOK_SECRET'),
+        getenv('SIGWISE_WEBHOOK_SECRET'),
     );
 } catch (WebhookVerificationException $e) {
     http_response_code(400);
