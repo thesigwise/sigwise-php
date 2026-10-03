@@ -3,7 +3,7 @@
     "description": "SigWise API client for PHP",
     "type": "library",
     "license": "proprietary",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "require": {
         "php": ">=8.1",
         "ext-curl": "*",
