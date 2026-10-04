@@ -35,6 +35,7 @@ namespace SigWise;
  * @phpstan-type Event array{type: EventType, name?: string, content?: string, metadata?: Metadata, occurred_at: string}
  * @phpstan-type EventInput array{type: EventType, name?: string, content?: string, metadata?: Metadata, occurred_at?: string}
  * @phpstan-type EventList array{events: list<Event>}
+ * @phpstan-type EventRetention 'forever'|'days'|'after_analysis'
  * @phpstan-type EventType 'event'|'message'
  * @phpstan-type IngestAccepted array{object_id: string, accepted: int, analysis_status: 'scheduled', analysis_delay_ms: int}
  * @phpstan-type IngestRequest array{object_type?: string, events: list<EventInput>, wait?: bool, signals?: list<string>, include_history?: bool}
@@ -59,8 +60,8 @@ namespace SigWise;
  * @phpstan-type RuleList array{rules: list<Rule>}
  * @phpstan-type RuleTriggeredEvent array{event: 'rule.triggered', rule_id: string, rule_name?: string, tenant_id: string, object_id: string, matched_when: string, model?: string, occurred_at: string, values: list<Answer>}
  * @phpstan-type RuleUpdate array{name?: string, when?: string, action_type?: ActionType, action_config?: ActionConfig, enabled?: bool, cooldown_seconds?: int}
- * @phpstan-type Settings array{auto_backfill_signals: bool}
- * @phpstan-type SettingsUpdate array{auto_backfill_signals?: bool}
+ * @phpstan-type Settings array{auto_backfill_signals: bool, event_retention: EventRetention, event_retention_days: int|null}
+ * @phpstan-type SettingsUpdate array{auto_backfill_signals?: bool, event_retention?: EventRetention, event_retention_days?: int}
  * @phpstan-type Signal array{key: string, type: SignalType, instructions: mixed, criteria?: mixed, enabled: bool, created_at: string, updated_at: string, backfill?: SignalBackfill}
  * @phpstan-type SignalBackfill array{signal_key: string, status: 'running'|'done', total: int, completed: int, pending: int, started_at: string}
  * @phpstan-type SignalInput array{type: SignalType, instructions: mixed, criteria?: mixed, enabled?: bool}

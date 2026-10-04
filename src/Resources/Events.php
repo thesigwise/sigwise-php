@@ -48,6 +48,12 @@ final class Events
      * `Retry-After`, request an analysis with `POST /v1/objects/{object_id}/analyze`
      * and read the answers with `GET /v1/objects/{object_id}` or by webhook.
      *
+     * **Event retention.** With `event_retention` `after_analysis` (see `PATCH
+     * /v1/settings`), a synchronous request's events are scored in memory and never
+     * written, so after an error nothing is recorded: resend the request (the
+     * `Idempotency-Key` is released for it). Asynchronous events are stored only until
+     * their analysis has read them.
+     *
      * **Safe retries.** Send an `Idempotency-Key` header (any unique string, such as a
      * UUID) and retry with the same key after a timeout or a `5xx`: the events are
      * recorded once. A repeat of an asynchronous request is answered like the first

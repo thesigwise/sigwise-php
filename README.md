@@ -161,6 +161,8 @@ An object is anything you want answers about: a user, a listing, an order.
   `GET /v1/objects`: List objects
 - `$sigwise->objects->get(string $objectId, array $options = [])`  
   `GET /v1/objects/{object_id}`: Get an object's analysis
+- `$sigwise->objects->delete(string $objectId, array $options = [])`  
+  `DELETE /v1/objects/{object_id}`: Delete an object's data
 - `$sigwise->objects->getState(string $objectId, array $options = [])`  
   `GET /v1/objects/{object_id}/state`: Get an object's compacted history
 - `$sigwise->objects->analyze(string $objectId, array $options = [])`  

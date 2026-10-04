@@ -18,7 +18,7 @@ namespace SigWise;
  */
 final class Client
 {
-    public const VERSION = '1.0.3';
+    public const VERSION = '1.0.4';
     public const DEFAULT_BASE_URL = 'https://api.sigwise.ai';
 
     /** How long each request token is valid for, in seconds (the API allows 300). */
