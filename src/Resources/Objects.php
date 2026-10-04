@@ -100,6 +100,28 @@ final class Objects
     }
 
     /**
+     * Delete an object's data.
+     *
+     * Deletes everything stored about the object: its events, answers, rolling
+     * summary, queued analysis, rule state and firings, and webhook deliveries. Use it
+     * when one of your users asks to be forgotten.
+     *
+     * Billing ledger entries keep the object id as financial records. The object
+     * reappears only if you send new events for it.
+     *
+     * `DELETE /v1/objects/{object_id}`
+     *
+     * @param array{timeout?: float|int, max_retries?: int, headers?: array<string, string>} $options
+     * @return void
+     * @throws SigWiseException
+     * @throws ConnectionException
+     */
+    public function delete(string $objectId, array $options = []): void
+    {
+        $this->client->request('DELETE', '/v1/objects/{object_id}', ['object_id' => $objectId], null, null, $options);
+    }
+
+    /**
      * Get an object's compacted history.
      *
      * Older events are folded into a rolling summary so the analyzer gets a bounded

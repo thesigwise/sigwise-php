@@ -47,6 +47,10 @@ final class Settings
      *
      * Omitted fields are left unchanged.
      *
+     * Limiting `event_retention` (`days` or `after_analysis`) also removes the sample
+     * message text kept in every object's rolling summary, since the summary outlives
+     * the events it was built from.
+     *
      * `PATCH /v1/settings`
      *
      * @param SettingsUpdate $body
